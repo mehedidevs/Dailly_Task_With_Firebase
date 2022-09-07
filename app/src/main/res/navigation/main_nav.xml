@@ -1,6 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/main_nav">
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main_nav"
+    app:startDestination="@id/noteListFragment">
 
+    <fragment
+        android:id="@+id/noteListFragment"
+        android:name="com.es.k_todo_firebase.note.NoteListFragment"
+        android:label="fragment_note_list"
+        tools:layout="@layout/fragment_note_list" />
+    <fragment
+        android:id="@+id/noteDetailsFragment"
+        android:name="com.es.k_todo_firebase.note.NoteDetailsFragment"
+        android:label="fragment_note_details"
+        tools:layout="@layout/fragment_note_details" />
 </navigation>
