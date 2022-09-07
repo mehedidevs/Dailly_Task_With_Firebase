@@ -1,6 +1,5 @@
 package com.es.k_todo_firebase.note.viewmodel
 
-import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.es.k_todo_firebase.data.model.Note
