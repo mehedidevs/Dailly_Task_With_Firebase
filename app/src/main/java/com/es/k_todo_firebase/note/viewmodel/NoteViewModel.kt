@@ -14,18 +14,16 @@ class NoteViewModel @Inject constructor(
 
 ) : ViewModel() {
 
-    init {
-        getNotes()
-    }
-
-    private val _notes = MutableLiveData<List<Note>>()
-
-     val note: LiveData<List<Note>>
-        get() = _notes
 
 
-    private fun getNotes() {
-        _notes.value = repository.getNotes()
+     val notes = MutableLiveData<List<Note>>()
+
+//     val note: LiveData<List<Note>>
+//        get() = _notes
+
+
+     fun getNotes() {
+        notes.value = repository.getNotes()
     }
 
 
