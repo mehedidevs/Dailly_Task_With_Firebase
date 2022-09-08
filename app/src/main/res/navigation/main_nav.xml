@@ -9,10 +9,22 @@
         android:id="@+id/noteListFragment"
         android:name="com.es.k_todo_firebase.note.NoteListFragment"
         android:label="fragment_note_list"
-        tools:layout="@layout/fragment_note_list" />
+        tools:layout="@layout/fragment_note_list" >
+        <action
+            android:id="@+id/action_noteListFragment_to_createTaskFragment"
+            app:destination="@id/createTaskFragment" />
+        <action
+            android:id="@+id/action_noteListFragment_to_noteDetailsFragment"
+            app:destination="@id/noteDetailsFragment" />
+    </fragment>
     <fragment
         android:id="@+id/noteDetailsFragment"
         android:name="com.es.k_todo_firebase.note.NoteDetailsFragment"
         android:label="fragment_note_details"
         tools:layout="@layout/fragment_note_details" />
+    <fragment
+        android:id="@+id/createTaskFragment"
+        android:name="com.es.k_todo_firebase.task.CreateTaskFragment"
+        android:label="fragment_create_task"
+        tools:layout="@layout/fragment_create_task" />
 </navigation>
