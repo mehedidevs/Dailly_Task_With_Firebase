@@ -2,4 +2,26 @@
     <string name="app_name">k_todo_firebase</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="note_item_desc_placholder">In this chapter, you’re going to learn about the different types of subjects in RxJava, see how to work with each one and why you might choose one over another based on some common use cases.</string>
+    <string name="note_detail_desc_placeholder">You’ve gotten a handle on what an Observable is, how to create one, how to subscribe to it, and how to dispose of things when you’re done. Observables are a fundamental part of RxJava, but a common need when developing apps is to manually add new values onto an Observable at runtime that will then be emitted to subscribers. What you want is something that can act as both an Observable and as an observer. And that something is called a subject.</string>
+    <string name="error_description">Description missing</string>
+    <string name="error_title">Title missing</string>
+    <string name="error_tag_text">Enter text</string>
+    <string name="enter_first_name">Enter first name</string>
+    <string name="enter_last_name">Enter last name</string>
+    <string name="enter_job_title">Enter job title</string>
+    <string name="enter_email">Enter email address</string>
+    <string name="invalid_email">Invalid email entered</string>
+    <string name="enter_password">Enter password</string>
+    <string name="invalid_password">Your password must be at least 8 characters</string>
+    <string name="logout">Logout</string>
+    <string name="noteListingFragment">Notes</string>
+    <string name="taskListingFragment">Tasks</string>
+    <string name="notes">Notes</string>
+    <string name="tasks">Tasks</string>
+    <string name="home_fragment">Home</string>
+    <string name="create_task">Create Task</string>
+    <string name="create">Create</string>
+    <string name="done">Done</string>
+    <string name="error_task_detail">Task detail is missing</string>
 </resources>

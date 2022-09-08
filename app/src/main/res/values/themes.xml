@@ -13,4 +13,59 @@
         <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
         <!-- Customize your theme here. -->
     </style>
+
+
+    <style name="TitilliumWebBold">
+        <item name="android:fontFamily">@font/titillium_web_bold</item>
+    </style>
+
+    <style name="TitilliumWebBlack">
+        <item name="android:fontFamily">@font/titillium_web_black</item>
+    </style>
+
+    <style name="TitilliumWebLight">
+        <item name="android:fontFamily">@font/titillium_web_light</item>
+    </style>
+
+    <style name="TitilliumWebRegular">
+        <item name="android:fontFamily">@font/titillium_web_regular</item>
+    </style>
+
+    <style name="TitleStyle">
+        <item name="android:fontFamily">@font/titillium_web_bold</item>
+        <item name="android:textSize">18dp</item>
+    </style>
+
+    <style name="SubTitleStyle">
+        <item name="android:fontFamily">@font/titillium_web_bold</item>
+        <item name="android:textSize">16dp</item>
+    </style>
+
+    <style name="DescStyle">
+        <item name="android:fontFamily">@font/titillium_web_regular</item>
+        <item name="android:textSize">14dp</item>
+        <item name="android:textColor">@color/black</item>
+        <item name="android:lineSpacingExtra">4dp</item>
+    </style>
+
+    <style name="TextStyle">
+        <item name="android:fontFamily">@font/titillium_web_regular</item>
+        <item name="android:textSize">14dp</item>
+    </style>
+
+    <style name="ChipTextStyle">
+        <item name="android:fontFamily">@font/titillium_web_regular</item>
+        <item name="android:textSize">12dp</item>
+    </style>
+
+    <style name="ShapeAppearanceOverlay.App.CornerSize8Percent" parent="">
+        <item name="cornerSize">8%</item>
+    </style>
+
+    <style name="CustomTextInputLayoutStyle" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+        <item name="boxStrokeColor">@color/black</item>
+        <item name="boxStrokeWidth">1dp</item>
+        <item name="hintTextColor">@color/black</item>
+    </style>
+
 </resources>
