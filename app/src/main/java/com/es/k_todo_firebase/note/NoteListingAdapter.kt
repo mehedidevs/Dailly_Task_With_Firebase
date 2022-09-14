@@ -9,6 +9,8 @@ import com.es.k_todo_firebase.databinding.ItemNoteLayoutBinding
 import com.es.k_todo_firebase.note.viewmodel.NoteViewModel_HiltModules
 
 class NoteListingAdapter(
+
+
     private val notList: List<Note>, private val context: Context
 ) :
     RecyclerView.Adapter<NoteListingAdapter.NoteViewHolder>() {
@@ -24,7 +26,8 @@ class NoteListingAdapter(
 
     override fun onBindViewHolder(holder: NoteViewHolder, position: Int) {
         val item = notList[position]
-        holder.binding.title.text = item.noteText
+        holder.bind(item)
+
 
     }
 
@@ -33,8 +36,14 @@ class NoteListingAdapter(
     }
 
 
-    class NoteViewHolder(val binding: ItemNoteLayoutBinding) :
+    class NoteViewHolder(private val binding: ItemNoteLayoutBinding) :
         RecyclerView.ViewHolder(binding.root) {
+
+        fun bind(item: Note) {
+            binding.title.text = item.noteText
+            binding.date.text = item.date.toString()
+
+        }
 
 
     }

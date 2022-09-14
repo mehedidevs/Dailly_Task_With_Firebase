@@ -13,6 +13,9 @@ import com.es.k_todo_firebase.data.model.Note
 import com.es.k_todo_firebase.databinding.FragmentNoteDetailsBinding
 import com.es.k_todo_firebase.note.viewmodel.NoteViewModel
 import com.es.k_todo_firebase.utils.UiState
+import com.es.k_todo_firebase.utils.hide
+import com.es.k_todo_firebase.utils.show
+import com.es.k_todo_firebase.utils.toast
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -31,7 +34,8 @@ class NoteListFragment : Fragment() {
             binding.root
         } else {
             binding = FragmentNoteDetailsBinding.inflate(inflater, container, false)
-            return binding.root        }
+            return binding.root
+        }
 
     }
 
@@ -52,14 +56,18 @@ class NoteListFragment : Fragment() {
             when (it) {
                 is UiState.Loading -> {
                     Log.i(TAG, "Loading.... ")
+                    binding.progressBar.show()
                 }
                 is UiState.Failure -> {
                     Log.i(TAG, "Failure ")
+                    binding.progressBar.hide()
+                    toast(it.error.toString())
 
                 }
                 is UiState.Success -> {
 
                     setDataToUI(it.data)
+                    binding.progressBar.hide()
 
                 }
 

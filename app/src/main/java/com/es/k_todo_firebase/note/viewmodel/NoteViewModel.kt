@@ -23,12 +23,9 @@ class NoteViewModel @Inject constructor(
     fun getNotes() {
         notes.value = UiState.Loading
 
-        android.os.Handler(Looper.getMainLooper()).postDelayed({
-            repository.getNotes {
-                notes.value = it
-            }
-
-        }, 5000)
+        repository.getNotes {
+            notes.value = it
+        }
 
     }
 
