@@ -36,20 +36,57 @@ class NoteRepositoryImp(private val database: FirebaseFirestore) : NoteRepositor
     }
 
     override fun addNote(note: Note, result: (UiState<String>) -> Unit) {
-        database.collection(Constants.NOTE)
-            .add(note).addOnSuccessListener {
-                result.invoke(
-                    UiState.Success(it.id)
-                )
-            }.addOnFailureListener {
+        val document = database.collection(Constants.NOTE).document()
 
-                result.invoke(
-                    UiState.Failure(it.localizedMessage)
-
-                )
-            }
+        note.id = document.id
 
 
+        document.set(note).addOnSuccessListener {
+            result.invoke(
+                UiState.Success("Note has been Created !")
+            )
+        }.addOnFailureListener {
+
+            result.invoke(
+                UiState.Failure(it.localizedMessage)
+
+            )
+        }
+
+
+    }
+
+    override fun updateNote(note: Note, result: (UiState<String>) -> Unit) {
+        val document = database.collection(Constants.NOTE).document()
+
+        document.set(note).addOnSuccessListener {
+            result.invoke(
+                UiState.Success("Note has been Updated !")
+            )
+        }.addOnFailureListener {
+
+            result.invoke(
+                UiState.Failure(it.localizedMessage)
+
+            )
+        }
+
+    }
+
+    override fun deleteNote(note: Note, result: (UiState<String>) -> Unit) {
+        val document = database.collection(Constants.NOTE).document(note.id)
+
+        document.delete().addOnSuccessListener {
+            result.invoke(
+                UiState.Success("Note has been Deleted !")
+            )
+        }.addOnFailureListener {
+
+            result.invoke(
+                UiState.Failure(it.localizedMessage)
+
+            )
+        }
     }
 
     /*
