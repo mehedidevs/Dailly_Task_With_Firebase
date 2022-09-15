@@ -56,6 +56,23 @@ class NoteRepositoryImp(private val database: FirebaseFirestore) : NoteRepositor
 
     }
 
+    override fun updateNote(note: Note, result: (UiState<String>) -> Unit) {
+        val document = database.collection(Constants.NOTE).document()
+
+        document.set(note).addOnSuccessListener {
+            result.invoke(
+                UiState.Success("Note has been Updated !")
+            )
+        }.addOnFailureListener {
+
+            result.invoke(
+                UiState.Failure(it.localizedMessage)
+
+            )
+        }
+
+    }
+
     /*
         override fun getNotes(): UiState<List<Note>> {
 

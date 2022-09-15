@@ -1,6 +1,5 @@
 package com.es.k_todo_firebase.di
 
-import com.es.k_todo_firebase.data.model.Note
 import com.es.k_todo_firebase.data.repositories.NoteRepository
 import com.es.k_todo_firebase.data.repositories.NoteRepositoryImp
 import com.google.firebase.firestore.FirebaseFirestore

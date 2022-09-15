@@ -40,5 +40,17 @@ class NoteViewModel @Inject constructor(
 
     }
 
+    fun updateNote(note: Note) {
+
+        notes.value = UiState.Loading
+
+        repository.updateNote(note) {
+            addNote.value = it
+
+        }
+
+    }
+
+
 
 }

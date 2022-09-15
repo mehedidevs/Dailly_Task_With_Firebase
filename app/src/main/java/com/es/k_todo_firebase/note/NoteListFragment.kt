@@ -11,18 +11,17 @@ import androidx.navigation.fragment.findNavController
 import com.es.k_todo_firebase.R
 import com.es.k_todo_firebase.data.model.Note
 import com.es.k_todo_firebase.databinding.FragmentNoteDetailsBinding
+import com.es.k_todo_firebase.databinding.FragmentNoteListBinding
+import com.es.k_todo_firebase.note.interfaces.NoteListener
 import com.es.k_todo_firebase.note.viewmodel.NoteViewModel
-import com.es.k_todo_firebase.utils.UiState
-import com.es.k_todo_firebase.utils.hide
-import com.es.k_todo_firebase.utils.show
-import com.es.k_todo_firebase.utils.toast
+import com.es.k_todo_firebase.utils.*
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class NoteListFragment : Fragment() {
+class NoteListFragment : Fragment(), NoteListener {
 
     private val noteViewModel: NoteViewModel by viewModels()
-    lateinit var binding: FragmentNoteDetailsBinding
+    lateinit var binding: FragmentNoteListBinding
     var TAG = "NoteListFragment"
 
     override fun onCreateView(
@@ -33,7 +32,7 @@ class NoteListFragment : Fragment() {
         return if (this::binding.isInitialized) {
             binding.root
         } else {
-            binding = FragmentNoteDetailsBinding.inflate(inflater, container, false)
+            binding = FragmentNoteListBinding.inflate(inflater, container, false)
             return binding.root
         }
 
@@ -80,11 +79,36 @@ class NoteListFragment : Fragment() {
 
     private fun setDataToUI(note: List<Note>) {
 
-        val adapter = NoteListingAdapter(note, requireActivity())
+        val adapter = NoteListingAdapter(this, note, requireActivity())
 
         binding.noteRecyclerView.adapter = adapter
 
 
+    }
+
+    override fun onItemClicked(note: Note) {
+        findNavController().navigate(
+            R.id.action_noteListFragment_to_noteDetailsFragment,
+            Bundle().apply {
+                putString("type", Constants.VIEW)
+                putParcelable("item", note)
+
+            })
+    }
+
+    override fun onEditClicked(note: Note) {
+
+        findNavController().navigate(
+            R.id.action_noteListFragment_to_noteDetailsFragment,
+            Bundle().apply {
+                putString("type", Constants.EDIT)
+                putParcelable("item", note)
+
+            })
+    }
+
+    override fun onDeleteClicked(note: Note) {
+        TODO("Not yet implemented")
     }
 
 }
