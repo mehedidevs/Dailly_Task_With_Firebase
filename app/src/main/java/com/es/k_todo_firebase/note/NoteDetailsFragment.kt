@@ -5,6 +5,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.navigation.fragment.findNavController
 import com.es.k_todo_firebase.R
 import com.es.k_todo_firebase.data.model.Note
 import com.es.k_todo_firebase.databinding.FragmentNoteDetailsBinding
@@ -36,6 +37,12 @@ class NoteDetailsFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         objectNote = requireArguments().getParcelable("item") ?: Note()
+        binding.cancel.setOnClickListener {
+
+            findNavController().navigate(R.id.action_noteDetailsFragment_to_noteListFragment)
+
+        }
+
         updateUi()
 
 
@@ -48,10 +55,17 @@ class NoteDetailsFragment : Fragment() {
             when (type) {
                 Constants.VIEW -> {
                     binding.taskEt.setText(objectNote.noteText)
+
+                    binding.title.text = "View Task"
+                    binding.done.text = "Create Task"
                 }
 
                 Constants.EDIT -> {
+                    binding.taskEt.setText(objectNote.noteText)
 
+                    binding.title.text = "Edit Task"
+
+                    binding.done.text = "Update Task"
                 }
 
 

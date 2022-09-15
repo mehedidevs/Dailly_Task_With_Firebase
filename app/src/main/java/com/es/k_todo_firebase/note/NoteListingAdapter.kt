@@ -11,7 +11,7 @@ import com.es.k_todo_firebase.note.viewmodel.NoteViewModel_HiltModules
 
 class NoteListingAdapter(
 
-    public val noteListener: NoteListener,
+    private val noteListener: NoteListener,
     private val notList: List<Note>,
     private val context: Context
 ) :
@@ -29,12 +29,18 @@ class NoteListingAdapter(
     override fun onBindViewHolder(holder: NoteViewHolder, position: Int) {
         val item = notList[position]
 
-        holder.binding.edit.setOnClickListener {
-            noteListener.onEditClicked(item)
-        }
 
         holder.binding.itemLayout.setOnClickListener {
             noteListener.onItemClicked(note = item)
+        }
+        holder.binding.edit.setOnClickListener {
+            noteListener.onEditClicked(note = item)
+        }
+
+        holder.binding.delete.setOnClickListener {
+
+            noteListener.onDeleteClicked(item)
+
         }
 
         holder.bind(item)
@@ -54,10 +60,6 @@ class NoteListingAdapter(
             binding.title.text = item.noteText
             binding.date.text = item.date.toString()
 
-            binding.edit.setOnClickListener {
-
-
-            }
 
         }
 

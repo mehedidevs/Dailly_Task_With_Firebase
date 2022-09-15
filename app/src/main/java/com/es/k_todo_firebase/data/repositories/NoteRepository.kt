@@ -10,4 +10,6 @@ interface NoteRepository {
 
     fun updateNote(note: Note, result: (UiState<String>) -> Unit)
 
+    fun deleteNote( id: Note, result: (UiState<String>) -> Unit)
+
 }

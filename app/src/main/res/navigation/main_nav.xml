@@ -21,7 +21,11 @@
         android:id="@+id/noteDetailsFragment"
         android:name="com.es.k_todo_firebase.note.NoteDetailsFragment"
         android:label="fragment_note_details"
-        tools:layout="@layout/fragment_note_details" />
+        tools:layout="@layout/fragment_note_details" >
+        <action
+            android:id="@+id/action_noteDetailsFragment_to_noteListFragment"
+            app:destination="@id/noteListFragment" />
+    </fragment>
     <fragment
         android:id="@+id/createTaskFragment"
         android:name="com.es.k_todo_firebase.task.CreateTaskFragment"

@@ -42,10 +42,7 @@ class NoteListFragment : Fragment(), NoteListener {
         super.onViewCreated(view, savedInstanceState)
 
         binding.gotoCreatePage.setOnClickListener {
-
             findNavController().navigate(R.id.action_noteListFragment_to_createTaskFragment)
-
-
         }
 
         noteViewModel.getNotes()
@@ -108,7 +105,34 @@ class NoteListFragment : Fragment(), NoteListener {
     }
 
     override fun onDeleteClicked(note: Note) {
-        TODO("Not yet implemented")
+
+        noteViewModel.deleteNote(note)
+        noteViewModel.response.observe(viewLifecycleOwner) { state ->
+            Log.i("TAG", " Data : $state")
+
+            when (state) {
+                is UiState.Loading -> {
+                    Log.i(TAG, "Loading.... ")
+                    binding.progressBar.show()
+                }
+                is UiState.Failure -> {
+                    Log.i(TAG, "Failure ")
+                    binding.progressBar.hide()
+                    toast(state.error.toString())
+
+                }
+                is UiState.Success -> {
+
+                    toast(state.data)
+                    binding.progressBar.hide()
+
+                }
+
+            }
+
+        }
+
+
     }
 
 }

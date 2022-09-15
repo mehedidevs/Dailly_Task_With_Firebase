@@ -2,13 +2,12 @@
 <com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/item_layout"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:id="@+id/item_layout"
     android:layout_margin="8dp"
-    android:clickable="true"
-    app:cardCornerRadius="12dp"
     app:cardBackgroundColor="@color/white"
+    app:cardCornerRadius="12dp"
     app:cardElevation="3dp">
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -44,7 +43,7 @@
             android:layout_marginTop="8dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/title"/>
+            app:layout_constraintTop_toBottomOf="@+id/title" />
 
         <TextView
             android:id="@+id/desc"
@@ -59,19 +58,30 @@
             app:layout_constraintTop_toBottomOf="@+id/tags" />
 
         <LinearLayout
-            app:layout_constraintTop_toBottomOf="@id/desc"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            app:layout_constraintTop_toBottomOf="@id/desc">
 
 
-            <ImageView
+            <TextView
                 android:id="@+id/edit"
-                android:src="@drawable/ic_baseline_edit_24"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"/>
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:drawableLeft="@drawable/ic_baseline_edit_24"
+                android:text="Edit Now"
+                android:textAppearance="@style/TextAppearance.Material3.TitleLarge" />
 
+            <TextView
+                android:id="@+id/delete"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:drawableLeft="@drawable/ic_baseline_delete_24"
+                android:text="Delete Now"
+                android:textAppearance="@style/TextAppearance.Material3.TitleLarge" />
 
         </LinearLayout>
 
