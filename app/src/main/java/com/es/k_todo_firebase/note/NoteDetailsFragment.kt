@@ -5,19 +5,23 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.es.k_todo_firebase.R
 import com.es.k_todo_firebase.data.model.Note
 import com.es.k_todo_firebase.databinding.FragmentNoteDetailsBinding
-import com.es.k_todo_firebase.utils.Constants
+import com.es.k_todo_firebase.note.viewmodel.NoteViewModel
+import com.es.k_todo_firebase.utils.*
+import dagger.hilt.android.AndroidEntryPoint
+import java.util.*
 
-
+@AndroidEntryPoint
 class NoteDetailsFragment : Fragment() {
 
 
     private lateinit var binding: FragmentNoteDetailsBinding
     private lateinit var objectNote: Note
-
+    private val viewModel: NoteViewModel by viewModels()
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -44,6 +48,41 @@ class NoteDetailsFragment : Fragment() {
         }
 
         updateUi()
+       binding.done.setOnClickListener{
+
+           if (binding.done.text.equals("Update Task")) {
+
+               val note = Note("", binding.taskEt.text.toString(), Date())
+
+
+               viewModel.addNote(note)
+               viewModel.addNote.observe(viewLifecycleOwner) { state ->
+                   when (state) {
+
+                       is UiState.Loading -> {
+                           binding.progressBar.show()
+                           toast("Data Loading...")
+                       }
+                       is UiState.Failure -> {
+
+                           binding.progressBar.hide()
+
+                           toast(state.error.toString())
+                       }
+                       is UiState.Success -> {
+
+                           binding.progressBar.hide()
+                           toast(state.data)
+                       }
+
+
+                   }
+
+
+               }
+           }
+
+       }
 
 
     }
